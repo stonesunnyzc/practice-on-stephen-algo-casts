@@ -12,6 +12,43 @@
 //   4
 //   buzz
 
-function fizzBuzz(n) {}
+
+
+
+//my answer
+function fizzBuzz(n) {
+    let strMap = new Map();
+    strMap.set(3,'fizz');
+    strMap.set(5,'buzz');
+    let arr = Array.from(strMap.keys());
+    for(let i =1;i<=n;i++){
+        print(i,getValidDivisors(i,arr),strMap);
+    }
+}
+
+function getValidDivisors(n,arr){
+    let result = [];
+    for(let ele of arr){
+        if(canBeDevideByTheNum(n,ele)) result.push(ele)
+    }
+    return result;
+}
+
+function print(n,arr,strObj){
+    let s='';
+    if(arr.length === 0){
+        console.log(n);
+    } else{
+        arr.forEach(ele => {
+            s = s+strObj.get(ele);
+        });
+        console.log(`${s}`);
+    }
+}
+
+function canBeDevideByTheNum(n,num){
+    return n%num === 0? true:false;
+}
+
 
 module.exports = fizzBuzz;

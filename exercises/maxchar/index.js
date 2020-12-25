@@ -5,6 +5,22 @@
 // maxChar("abcccccccd") === "c"
 // maxChar("apple 1231111") === "1"
 
-function maxChar(str) {}
+
+
+// my answer
+function maxChar(str) {
+    const hash = {};
+    let maxKey,max=0;
+    for(let c of str){
+        hash[c] = hash[c] + 1 || 1;
+    }
+    for(let key in hash){
+        if(hash[key]>max){
+            max = hash[key];
+            maxKey = key;
+        }
+    }
+    return maxKey;
+}
 
 module.exports = maxChar;
